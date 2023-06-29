@@ -10,6 +10,8 @@
  *     Interval(int s, int e) : start(s), end(e) {}
  * };
  */
+
+//先由大到小排序，當後續的開會時間>前面的結束時間=false，反之true
 class Solution {
 public:
     bool canAttendMeetings(vector<Interval>& intervals) {
@@ -19,7 +21,7 @@ public:
 		return x.start < y.start;
 	    });
         for (int i = 1; i < intervals.size(); ++i) {
-            if (intervals[i].start < intervals[i - 1].end) {
+            if (intervals[i].start < intervals[i - 1].end) {  //當後續的開會時間>前面的結束時間
                 return false;
             }
         }
